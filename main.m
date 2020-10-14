@@ -27,10 +27,8 @@ Y = mocapJoints(mocapFnum,:,2);
 Z = mocapJoints(mocapFnum,:,3);
 
 % Pass coordinate array to convert3Dto2D function to convert the 12 3-D
-% joint coordinates to 2-D pixel coordinates.
-out1 = convert3Dto2D(X,Y,Z);
+% joint coordinates to 2-D pixel coordinates (for both cameras).
+out1 = convert3Dto2D(X,Y,Z,1);
+out2 = convert3Dto2D(X,Y,Z,2);
 
-
-
-
-
+out3 = convert2Dto3D(out1(1,:),out1(2,:),out2(1,:),out2(2,:));
