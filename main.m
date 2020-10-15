@@ -28,7 +28,14 @@ Z = mocapJoints(mocapFnum,:,3);
 
 % Pass coordinate array to convert3Dto2D function to convert the 12 3-D
 % joint coordinates to 2-D pixel coordinates (for both cameras).
-out1 = convert3Dto2D(X,Y,Z,1);
-out2 = convert3Dto2D(X,Y,Z,2);
+vue2_2D = convert3Dto2D(X,Y,Z,1);
+vue4_2D = convert3Dto2D(X,Y,Z,2);
 
-out3 = convert2Dto3D(out1(1,:),out1(2,:),out2(1,:),out2(2,:));
+% Use pairs of 2-D coordinates to generate 3-D coordinates
+out3D = convert2Dto3D(vue2_2D(1,:),vue2_2D(2,:),vue4_2D(1,:),vue4_2D(2,:));
+
+% List of euclidean distance between original and generated points
+for i = 1:12
+    L2list(i) = sqrt((X(i)-out3D(i,1))^2 + (Y(i)-out3D(i,2))^2 + (Z(i)-out3D(i,3))^2);
+end
+

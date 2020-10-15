@@ -3,14 +3,17 @@ function [out] = convert3Dto2D(X,Y,Z,camera)
 load 'vue2CalibInfo.mat'
 load 'vue4CalibInfo.mat'
 
+% Option 1 is for vue2 camera
 if camera == 1
     Pmat = vue2.Pmat;
     Kmat = vue2.Kmat;
+% Option 2 (or any other) is for vue4 camera
 else
     Pmat = vue4.Pmat;
     Kmat = vue4.Kmat;
 end
 
+% For all 12 joints, apply world coordinates to pixel value equation
 for i = 1:12
     W = [X(i) Y(i) Z(i) 1]';
     Pl = Kmat*Pmat*W;
