@@ -3,7 +3,9 @@ clear;
 load 'Subject4-Session3-Take4_mocapJoints.mat'
 
 %filenamevue2mp4 = 'Subject4-Session3-24form-Full-Take4-Vue2.mp4';
+%filenamevue4mp4 = 'Subject4-Session3-24form-Full-Take4-Vue4.mp4';
 %vue2video = VideoReader(filenamevue2mp4);
+%vue4video = VideoReader(filenamevue4mp4);
 
 % Select a frame where the confidence value is 1 for all joints
 for x = 5:30000
@@ -66,4 +68,9 @@ plotEpipolar(vue2_2D(1,:),vue2_2D(2,:),vue4_2D(1,:),vue4_2D(2,:));
 %vue2video.CurrentTime = (mocapFnum2 - 1)*(50/100)/vue2video.FrameRate;
 %vid2Frame = readFrame(vue2video);
 
-%image(vid2Frame);
+%figure; image(vid2Frame);
+
+%vue4video.CurrentTime = (mocapFnum - 1)*(50/100)/vue4video.FrameRate;
+%vid4Frame = readFrame(vue4video);
+
+%figure; image(vid4Frame);
