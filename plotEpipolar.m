@@ -15,8 +15,12 @@ Pmat2 = vue4.Pmat;
 cam4in2 = convert3Dto2D(camera4_position(1,1),camera4_position(2,1),camera4_position(3,1),1);
 
 % Plot joints
-figure; plot(X1,Y1,'b.','MarkerSize',20)
+fig1 = openfig('man1.fig','new');
+fig1 = figure(1);
 axis([0 1920 0 1088])
+hold on
+figure(1)
+plot(X1,Y1,'b.','MarkerSize',20)
 
 xlim = get(gca,'XLim');
 
@@ -40,7 +44,11 @@ end
 cam2in4 = convert3Dto2D(camera2_position(1,1),camera2_position(2,1),camera2_position(3,1),2);
 
 % Plot joints
-figure; plot(X2,Y2,'b.','MarkerSize',20)
+fig2 = openfig('man2.fig','new');
+fig2 = figure(2);
+hold on
+figure(2)
+plot(X2,Y2,'b.','MarkerSize',20)
 axis([0 1920 0 1088])
 
 xlim = get(gca,'XLim');
