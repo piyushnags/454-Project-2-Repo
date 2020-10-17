@@ -20,7 +20,8 @@ fig1 = figure(1);
 axis([0 1920 0 1088])
 hold on
 figure(1)
-plot(X1,Y1,'b.','MarkerSize',20)
+plot(X1,Y1,'c.','MarkerSize',25)
+
 
 xlim = get(gca,'XLim');
 
@@ -48,7 +49,7 @@ fig2 = openfig('man2.fig','new');
 fig2 = figure(2);
 hold on
 figure(2)
-plot(X2,Y2,'b.','MarkerSize',20)
+plot(X2,Y2,'c.','MarkerSize',25)
 axis([0 1920 0 1088])
 
 xlim = get(gca,'XLim');

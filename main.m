@@ -7,8 +7,10 @@ load 'Subject4-Session3-Take4_mocapJoints.mat'
 %vue2video = VideoReader(filenamevue2mp4);
 %vue4video = VideoReader(filenamevue4mp4);
 
+[max_frame,~,~] = size(mocapJoints);
+
 % Select a frame where the confidence value is 1 for all joints
-for x = 5:30000
+for x = 5:max_frame
     conf_values = mocapJoints(x,:,4);
     a = min(conf_values,[],'all');
     if a == 1
@@ -42,7 +44,7 @@ for i = 1:12
 end
 
 % Choose another frame for displaying epipolar lines
-for i = 500:30000
+for i = 500:max_frame
     conf_values = mocapJoints(i,:,4);
     a = min(conf_values,[],'all');
     if a == 1
@@ -74,3 +76,20 @@ plotEpipolar(vue2_2D(1,:),vue2_2D(2,:),vue4_2D(1,:),vue4_2D(2,:));
 %vid4Frame = readFrame(vue4video);
 
 %figure; image(vid4Frame);
+
+list = euclidean_statistics(max_frame);
+
+for i = 1:12
+    joint_std_dev(i) = std(list(:,i),1);
+end
+
+std_dev_all = std(list,1,'all');
+
+figure(3); 
+figure(3)
+[list_len,~] = size(list);
+for i = 1:list_len
+    hold on
+    plot(i,sum(list(i,:)),'k.');
+    hold off
+end
