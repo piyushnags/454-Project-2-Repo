@@ -1,7 +1,12 @@
-function plotEpipolar(X1,Y1,X2,Y2)
+function plotEpipolar(X1,Y1,X2,Y2,mocapFnum)
 
 load 'vue2CalibInfo.mat'
 load 'vue4CalibInfo.mat'
+
+filenamevue2mp4 = 'Subject4-Session3-24form-Full-Take4-Vue2_updated.mp4';
+filenamevue4mp4 = 'Subject4-Session3-24form-Full-Take4-Vue4_updated.mp4';
+vue2video = VideoReader(filenamevue2mp4);
+vue4video = VideoReader(filenamevue4mp4);
 
 [~,N] = size(X1);
 
@@ -15,11 +20,14 @@ Pmat2 = vue4.Pmat;
 cam4in2 = convert3Dto2D(camera4_position(1,1),camera4_position(2,1),camera4_position(3,1),1);
 
 % Plot joints
-fig1 = openfig('man1.fig','new');
-fig1 = figure(1);
+vue2video.CurrentTime = (mocapFnum - 1)*(50/100)/vue2video.FrameRate;
+vid2Frame = readFrame(vue2video);
+
+figure(1); image(vid2Frame);
+
 axis([0 1920 0 1088])
-hold on
 figure(1)
+hold on
 plot(X1,Y1,'c.','MarkerSize',25)
 
 
@@ -45,10 +53,13 @@ end
 cam2in4 = convert3Dto2D(camera2_position(1,1),camera2_position(2,1),camera2_position(3,1),2);
 
 % Plot joints
-fig2 = openfig('man2.fig','new');
-fig2 = figure(2);
-hold on
+vue4video.CurrentTime = (mocapFnum - 1)*(50/100)/vue4video.FrameRate;
+vid4Frame = readFrame(vue4video);
+
+figure(2); image(vid4Frame);
+
 figure(2)
+hold on
 plot(X2,Y2,'c.','MarkerSize',25)
 axis([0 1920 0 1088])
 
