@@ -96,29 +96,24 @@ spine_bottom_3 = [(X(7)+X(10)) (Y(7)+Y(10)) (Z(7)+Z(10))]/2;
 
 plot3([spine_top_3(1) spine_bottom_3(1)],[spine_top_3(2) spine_bottom_3(2)],[spine_top_3(3) spine_bottom_3(3)],'k-','LineWidth',2);
 
-hold off
-
-figure(4);
-figure(4)
-view(3)
 X3 = out3D(:,1);
 Y3 = out3D(:,2);
 Z3 = out3D(:,3);
 hold on
-plot3(X3,Y3,Z3,'r.','MarkerSize',25)
-plot3([X3(1) X3(2)],[Y3(1) Y3(2)],[Z3(1) Z3(2)],'r-','LineWidth',2);
-plot3([X3(2) X3(3)],[Y3(2) Y3(3)],[Z3(2) Z3(3)],'r-','LineWidth',2);
-plot3([X3(4) X3(5)],[Y3(4) Y3(5)],[Z3(4) Z3(5)],'r-','LineWidth',2);
-plot3([X3(5) X3(6)],[Y3(5) Y3(6)],[Z3(5) Z3(6)],'r-','LineWidth',2);
-plot3([X3(7) X3(8)],[Y3(7) Y3(8)],[Z3(7) Z3(8)],'r-','LineWidth',2);
-plot3([X3(8) X3(9)],[Y3(8) Y3(9)],[Z3(8) Z3(9)],'r-','LineWidth',2);
-plot3([X3(10) X3(11)],[Y3(10) Y3(11)],[Z3(10) Z3(11)],'r-','LineWidth',2);
-plot3([X3(11) X3(12)],[Y3(11) Y3(12)],[Z3(11) Z3(12)],'r-','LineWidth',2);
-plot3([X3(1) X3(4)],[Y3(1) Y3(4)],[Z3(1) Z3(4)],'r-','LineWidth',2);
-plot3([X3(7) X3(10)],[Y3(7) Y3(10)],[Z3(7) Z3(10)],'r-','LineWidth',2);
+plot3(X3,Y3,Z3,'r.','MarkerSize',15)
+plot3([X3(1) X3(2)],[Y3(1) Y3(2)],[Z3(1) Z3(2)],'r--','LineWidth',2);
+plot3([X3(2) X3(3)],[Y3(2) Y3(3)],[Z3(2) Z3(3)],'r--','LineWidth',2);
+plot3([X3(4) X3(5)],[Y3(4) Y3(5)],[Z3(4) Z3(5)],'r--','LineWidth',2);
+plot3([X3(5) X3(6)],[Y3(5) Y3(6)],[Z3(5) Z3(6)],'r--','LineWidth',2);
+plot3([X3(7) X3(8)],[Y3(7) Y3(8)],[Z3(7) Z3(8)],'r--','LineWidth',2);
+plot3([X3(8) X3(9)],[Y3(8) Y3(9)],[Z3(8) Z3(9)],'r--','LineWidth',2);
+plot3([X3(10) X3(11)],[Y3(10) Y3(11)],[Z3(10) Z3(11)],'r--','LineWidth',2);
+plot3([X3(11) X3(12)],[Y3(11) Y3(12)],[Z3(11) Z3(12)],'r--','LineWidth',2);
+plot3([X3(1) X3(4)],[Y3(1) Y3(4)],[Z3(1) Z3(4)],'r--','LineWidth',2);
+plot3([X3(7) X3(10)],[Y3(7) Y3(10)],[Z3(7) Z3(10)],'r--','LineWidth',2);
 
 spine_top_3 = [(X3(1)+X3(4)) (Y3(1)+Y3(4)) (Z3(1)+Z3(4))]/2;
 spine_bottom_3 = [(X3(7)+X3(10)) (Y3(7)+Y3(10)) (Z3(7)+Z3(10))]/2;
 
-plot3([spine_top_3(1) spine_bottom_3(1)],[spine_top_3(2) spine_bottom_3(2)],[spine_top_3(3) spine_bottom_3(3)],'r-','LineWidth',2);
+plot3([spine_top_3(1) spine_bottom_3(1)],[spine_top_3(2) spine_bottom_3(2)],[spine_top_3(3) spine_bottom_3(3)],'r--','LineWidth',2);
 hold off

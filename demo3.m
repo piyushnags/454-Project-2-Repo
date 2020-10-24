@@ -35,8 +35,8 @@ median_all = median(list,'all');
 max_all = max(list,[],'all');
 
 % Plot sum of error for each frame
-figure(7); 
-figure(7)
+figure(6); 
+figure(6)
 [list_len,~] = size(list);
 for i = 1:list_len
     hold on

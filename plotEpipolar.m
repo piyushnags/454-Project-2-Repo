@@ -23,10 +23,10 @@ cam4in2 = convert3Dto2D(camera4_position(1,1),camera4_position(2,1),camera4_posi
 vue2video.CurrentTime = (mocapFnum - 1)*(50/100)/vue2video.FrameRate;
 vid2Frame = readFrame(vue2video);
 
-figure(5); image(vid2Frame);
+figure(4); image(vid2Frame);
 
 axis([0 1920 0 1088])
-figure(5)
+figure(4)
 hold on
 plot(X1,Y1,'c.','MarkerSize',25)
 
@@ -56,9 +56,9 @@ cam2in4 = convert3Dto2D(camera2_position(1,1),camera2_position(2,1),camera2_posi
 vue4video.CurrentTime = (mocapFnum - 1)*(50/100)/vue4video.FrameRate;
 vid4Frame = readFrame(vue4video);
 
-figure(6); image(vid4Frame);
+figure(5); image(vid4Frame);
 
-figure(6)
+figure(5)
 hold on
 plot(X2,Y2,'c.','MarkerSize',25)
 axis([0 1920 0 1088])
