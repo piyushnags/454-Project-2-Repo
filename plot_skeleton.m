@@ -22,10 +22,10 @@ Y2 = cam4_points(2,:);
 vue2video.CurrentTime = (mocapFnum - 1)*(50/100)/vue2video.FrameRate;
 vid2Frame = readFrame(vue2video);
 
-figure(4); image(vid2Frame);
+figure(1); image(vid2Frame);
 
 axis([0 1920 0 1088])
-figure(4)
+figure(1)
 hold on
 plot(X1,Y1,'c.','MarkerSize',25)
 plot([X1(1) X1(2)],[Y1(1) Y1(2)],'c-','LineWidth',2);
@@ -49,10 +49,10 @@ hold off
 vue4video.CurrentTime = (mocapFnum - 1)*(50/100)/vue4video.FrameRate;
 vid4Frame = readFrame(vue4video);
 
-figure(5); image(vid4Frame);
+figure(2); image(vid4Frame);
 
 axis([0 1920 0 1088])
-figure(5)
+figure(2)
 hold on
 plot(X2,Y2,'c.','MarkerSize',25)
 plot([X2(1) X2(2)],[Y2(1) Y2(2)],'c-','LineWidth',1.5);
@@ -75,8 +75,8 @@ hold off
 
 out3D = convert2Dto3D(X1,Y1,X2,Y2);
 
-figure(6);
-figure(6)
+figure(3);
+figure(3)
 view(3)
 hold on
 plot3(X,Y,Z,'k.','MarkerSize',25)
@@ -98,8 +98,8 @@ plot3([spine_top_3(1) spine_bottom_3(1)],[spine_top_3(2) spine_bottom_3(2)],[spi
 
 hold off
 
-figure(7);
-figure(7)
+figure(4);
+figure(4)
 view(3)
 X3 = out3D(:,1);
 Y3 = out3D(:,2);
