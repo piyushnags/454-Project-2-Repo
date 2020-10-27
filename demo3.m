@@ -44,3 +44,13 @@ for i = 1:list_len
     hold off
 end
 
+fprintf("The following are the L^2 statistics for each of the joint pairs over the entire time sequence (x 10^(-12))\n");
+fprintf("Mean      Std. Deviation      Minimum           Median        Max\n");
+for i = 1:12
+    fprintf("%f\t%f\t%f\t%f\t%f\n", (10^(12))*joint_mean(i), (10^(12))*joint_std_dev(i), (10^(12))*joint_minimum(i), (10^(12))*joint_median(i), (10^(12))*joint_max(i));
+end
+
+fprintf("The following are the L^2 statistics for ALL joint pairs over the entire time sequence (x 10^(-12))\n");
+fprintf("Mean      Std. Deviation      Minimum           Median        Max\n");
+fprintf("%f\t%f\t%f\t%f\t%f\n", (10^(12))*mean_all, (10^(12))*std_dev_all, (10^(12))*min_all, (10^(12))*median_all, (10^(12))*max_all);
+
