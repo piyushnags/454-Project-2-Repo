@@ -17,4 +17,6 @@ for x = 5:max_frame
     end
 end
 
+% Call plot skeleton to demonstrate functionality of convert3Dto2D and
+% convert2Dto3D
 plot_skeleton(mocapFnum);

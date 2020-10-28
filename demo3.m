@@ -44,6 +44,7 @@ for i = 1:list_len
     hold off
 end
 
+% Print statistics calculated above
 fprintf("The following are the L^2 statistics for each of the joint pairs over the entire time sequence (x 10^(-12))\n");
 fprintf("Mean      Std. Deviation      Minimum           Median        Max\n");
 for i = 1:12
