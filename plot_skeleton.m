@@ -1,6 +1,8 @@
 function plot_skeleton(mocapFnum)
 
 load 'Subject4-Session3-Take4_mocapJoints.mat'
+load 'vue2CalibInfo.mat'
+load 'vue4CalibInfo.mat'
 
 % Load 3-D coordinates for a given frame
 X = mocapJoints(mocapFnum,:,1);
@@ -13,9 +15,12 @@ filenamevue4mp4 = 'Subject4-Session3-24form-Full-Take4-Vue4_updated.mp4';
 vue2video = VideoReader(filenamevue2mp4);
 vue4video = VideoReader(filenamevue4mp4);
 
+world3Dcoords(1,:) = X;
+world3Dcoords(2,:) = Y;
+world3Dcoords(3,:) = Z;
 % Get pairs of corresponding 2D coordinates
-cam2_points = convert3Dto2D(X,Y,Z,1);
-cam4_points = convert3Dto2D(X,Y,Z,2);
+cam2_points = project3DTo2D(vue2, world3Dcoords);
+cam4_points = project3DTo2D(vue4, world3Dcoords);
 
 % Store 2D coordinates in X1,Y1,X2,Y2 for ease of use
 X1 = cam2_points(1,:);
@@ -91,7 +96,13 @@ plot([spine_top_2(1) spine_bottom_2(1)],[spine_top_2(2) spine_bottom_2(2)],'c-',
 hold off
 
 % Get reconstructed 3D coordinates
-out3D = convert2Dto3D(X1,Y1,X2,Y2);
+cam1pixelcoords(1,:) = X1;
+cam1pixelcoords(2,:) = Y1;
+cam1pixelcoords(3,:) = 1;
+cam2pixelcoords(1,:) = X2;
+cam2pixelcoords(2,:) = Y2;
+cam2pixelcoords(3,:) = 1;
+out3D = reconstruct3DFrom2D(vue2,cam1pixelcoords,vue4,cam2pixelcoords);
 
 % Plot input skeleton
 figure(3);
@@ -124,9 +135,9 @@ plot3([spine_top_3(1) spine_bottom_3(1)],[spine_top_3(2) spine_bottom_3(2)],[spi
 
 % Plot reconstructed 3D skeleton
 % Use dashed line to distinguish from input skeleton
-X3 = out3D(:,1);
-Y3 = out3D(:,2);
-Z3 = out3D(:,3);
+X3 = out3D(1,:);
+Y3 = out3D(2,:);
+Z3 = out3D(3,:);
 hold on
 
 % First plot the joints

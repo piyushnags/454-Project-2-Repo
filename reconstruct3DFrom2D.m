@@ -1,21 +1,26 @@
-function [out] = convert2Dto3D(X1,Y1,X2,Y2)
+function [out] = reconstruct3DFrom2D(cam1, cam1PixelCoords, cam2, cam2PixelCoords)
 
 load 'vue2CalibInfo.mat'
 load 'vue4CalibInfo.mat'
+
+X1 = cam1PixelCoords(1,:);
+Y1 = cam1PixelCoords(2,:);
+X2 = cam2PixelCoords(1,:);
+Y2 = cam2PixelCoords(2,:);
 
 % Get size, X1,Y1,etc. should be 1xN size
 [~,N] = size(X1);
 
 % Camera position in world coordinates
-c1 = vue2.position';
-c2 = vue4.position';
+c1 = cam1.position';
+c2 = cam2.position';
 
 % Read extrinsic and intrinsic parameters
-R1 = vue2.Rmat;
-R2 = vue4.Rmat;
+R1 = cam1.Rmat;
+R2 = cam2.Rmat;
 
-K1 = vue2.Kmat;
-K2 = vue4.Kmat;
+K1 = cam1.Kmat;
+K2 = cam2.Kmat;
 
 % Write X into 1st row and Y into 2nd row
 for i = 1:N
@@ -42,5 +47,5 @@ for i = 1:N
     % Final point is midpoint
     P = (P1+P2)/2;
     
-    out(i,:) = P';
+    out(:,i) = P;
 end
