@@ -1,4 +1,4 @@
-function [out] = project3DTo2D(cam, worldCoord3DPoints)
+function [projected2DPoints] = project3DTo2D(cam, worldCoord3DPoints)
 
 load 'vue2CalibInfo.mat'
 load 'vue4CalibInfo.mat'
@@ -20,8 +20,8 @@ for i = 1:N
     % Transformation equation to convert world coordinates to camera
     % cordinates
     Pl = Kmat*Pmat*W;
-    out(1,i) = Pl(1,1)/Pl(3,1);
-    out(2,i) = Pl(2,1)/Pl(3,1);
+    projected2DPoints(1,i) = Pl(1,1)/Pl(3,1);
+    projected2DPoints(2,i) = Pl(2,1)/Pl(3,1);
 end
 % Make result homogenous
-out(3,:) = 1;
+projected2DPoints(3,:) = 1;

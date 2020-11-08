@@ -1,4 +1,4 @@
-function [out] = reconstruct3DFrom2D(cam1, cam1PixelCoords, cam2, cam2PixelCoords)
+function [recovered3DPoints] = reconstruct3DFrom2D(cam1, cam1PixelCoords, cam2, cam2PixelCoords)
 
 load 'vue2CalibInfo.mat'
 load 'vue4CalibInfo.mat'
@@ -47,5 +47,5 @@ for i = 1:N
     % Final point is midpoint
     P = (P1+P2)/2;
     
-    out(:,i) = P;
+    recovered3DPoints(:,i) = P;
 end
