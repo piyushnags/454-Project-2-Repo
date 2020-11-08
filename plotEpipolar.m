@@ -16,6 +16,10 @@ camera4_position = vue4.position';
 Pmat1 = vue2.Pmat;
 Pmat2 = vue4.Pmat;
 
+% xlim is used to plot lines throughout the axes instead of just plotting a
+% line segment between 2 points so that the results match the example
+% provided in the project description
+
 % Plot epipolar lines from view of camera 2
 % Get position of camera vue4 in camera vue2 system
 
